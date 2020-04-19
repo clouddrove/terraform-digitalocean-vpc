@@ -37,7 +37,7 @@ module "labels" {
 #Module      : VPC
 #Description : VPCs are virtual networks containing resources that can communicate with each other in full isolation, using private IP addresses.
 resource "digitalocean_vpc" "default" {
- // count = var.enable_vpc == true ? 1 : 0
+  count = var.enable_vpc == true ? 1 : 0
 
   name           = module.labels.id
   region         = coalesce(local.region[var.region], var.region)
