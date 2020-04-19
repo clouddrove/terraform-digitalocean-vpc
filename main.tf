@@ -2,9 +2,6 @@
 ##Description : This Script is used to create SSH Key.
 ## Copyright @ CloudDrove. All Right Reserved.
 
-
-
-
 # locals for regions
 locals {
   region = {
@@ -45,14 +42,3 @@ resource "digitalocean_vpc" "default" {
   ip_range    = var.ip_ragne
 
 }
-
-
-
-
-
-
-
-
-
-
-
