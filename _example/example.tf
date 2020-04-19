@@ -6,11 +6,11 @@ provider "digitalocean" {
 }
 
 module "vpc" {
-  source = "./../"
-  name              = "basic-sns"
-  application       = "clouddrove"
-  environment       = "test"
-  label_order       = ["environment", "application", "name"]
-  enable_vpc        = true
-  region            = "bangalore-1"
+  source      = "./../"
+  name        = "basic-sns"
+  application = "clouddrove"
+  environment = "test"
+  label_order = ["environment", "application", "name"]
+  enable_vpc  = true
+  region      = "bangalore-1"
 }

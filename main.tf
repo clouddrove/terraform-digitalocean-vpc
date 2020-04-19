@@ -8,17 +8,17 @@
 # locals for regions
 locals {
   region = {
-    amsterdam-2      = "ams2"
-    amsterdam-3      = "ams3"
-    bangalore-1      = "blr1"
-    frankfurt-1      = "fra1"
-    london-1           = "lon-1"
-    newyork-1        = "nyc1"
-    newyork-2        = "nyc2"
-    newyork-3        = "nyc3"
-    francisco-1      = "sfo1"
-    singapore-1      = "sgp1"
-    toronto-1        = "tor1"
+    amsterdam-2 = "ams2"
+    amsterdam-3 = "ams3"
+    bangalore-1 = "blr1"
+    frankfurt-1 = "fra1"
+    london-1    = "lon-1"
+    newyork-1   = "nyc1"
+    newyork-2   = "nyc2"
+    newyork-3   = "nyc3"
+    francisco-1 = "sfo1"
+    singapore-1 = "sgp1"
+    toronto-1   = "tor1"
   }
 }
 
@@ -39,10 +39,10 @@ module "labels" {
 resource "digitalocean_vpc" "default" {
   count = var.enable_vpc == true ? 1 : 0
 
-  name           = module.labels.id
-  region         = coalesce(local.region[var.region], var.region)
-  description    = var.description
-  ip_range       = var.ip_ragne
+  name        = module.labels.id
+  region      = coalesce(local.region[var.region], var.region)
+  description = var.description
+  ip_range    = var.ip_ragne
 
 }
 
