@@ -2,11 +2,11 @@
 
 
 <h1 align="center">
-    Terraform DigitalOcean SSH Key
+    Terraform DigitalOcean VPC
 </h1>
 
 <p align="center" style="font-size: 1.2rem;"> 
-    Provides a DigitalOcean SSH key resource to allow you to manage SSH keys for Droplet access.
+    VPCs are virtual networks containing resources that can communicate with each other in full isolation, using private IP addresses.
      </p>
 
 <p align="center">
@@ -22,13 +22,13 @@
 </p>
 <p align="center">
 
-<a href='https://facebook.com/sharer/sharer.php?u=https://github.com/clouddrove/terraform-digitalocean-ssh-key'>
+<a href='https://facebook.com/sharer/sharer.php?u=https://github.com/clouddrove/terraform-digitalocean-vpc'>
   <img title="Share on Facebook" src="https://user-images.githubusercontent.com/50652676/62817743-4f64cb80-bb59-11e9-90c7-b057252ded50.png" />
 </a>
-<a href='https://www.linkedin.com/shareArticle?mini=true&title=Terraform+DigitalOcean+SSH+Key&url=https://github.com/clouddrove/terraform-digitalocean-ssh-key'>
+<a href='https://www.linkedin.com/shareArticle?mini=true&title=Terraform+DigitalOcean+VPC&url=https://github.com/clouddrove/terraform-digitalocean-vpc'>
   <img title="Share on LinkedIn" src="https://user-images.githubusercontent.com/50652676/62817742-4e339e80-bb59-11e9-87b9-a1f68cae1049.png" />
 </a>
-<a href='https://twitter.com/intent/tweet/?text=Terraform+DigitalOcean+SSH+Key&url=https://github.com/clouddrove/terraform-digitalocean-ssh-key'>
+<a href='https://twitter.com/intent/tweet/?text=Terraform+DigitalOcean+VPC&url=https://github.com/clouddrove/terraform-digitalocean-vpc'>
   <img title="Share on Twitter" src="https://user-images.githubusercontent.com/50652676/62817740-4c69db00-bb59-11e9-8a79-3580fbbf6d5c.png" />
 </a>
 
@@ -50,17 +50,20 @@ This module has a few dependencies:
 
 
 
-**IMPORTANT:** Since the `master` branch used in `source` varies based on new modifications, we suggest that you use the release versions [here](https://github.com/clouddrove/terraform-digitalocean-ssh-key/releases).
+**IMPORTANT:** Since the `master` branch used in `source` varies based on new modifications, we suggest that you use the release versions [here](https://github.com/clouddrove/terraform-digitalocean-vpc/releases).
 
 
 ### Simple Example
 Here is an example of how you can use this module in your inventory structure:
 ```hcl
-    module "ssh-key" {
-      source          = "./../"
-      key             = "~/.ssh/id_rsa.pub"
-      key_name        = "devops"
-      enable_ssh_key  = true
+      module "vpc" {
+      source = "./../"
+      name              = "basic-sns"
+      application       = "clouddrove"
+      environment       = "test"
+      label_order       = ["environment", "application", "name"]
+      enable_vpc        = true
+      region            = "bangalore-1"
     }
 ```
 
@@ -75,9 +78,9 @@ Here is an example of how you can use this module in your inventory structure:
 
 
 ## Feedback 
-If you come accross a bug or have any feedback, please log it in our [issue tracker](https://github.com/clouddrove/terraform-digitalocean-ssh-key/issues), or feel free to drop us an email at [hello@clouddrove.com](mailto:hello@clouddrove.com).
+If you come accross a bug or have any feedback, please log it in our [issue tracker](https://github.com/clouddrove/terraform-digitalocean-vpc/issues), or feel free to drop us an email at [hello@clouddrove.com](mailto:hello@clouddrove.com).
 
-If you have found it worth your time, go ahead and give us a ★ on [our GitHub](https://github.com/clouddrove/terraform-digitalocean-ssh-key)!
+If you have found it worth your time, go ahead and give us a ★ on [our GitHub](https://github.com/clouddrove/terraform-digitalocean-vpc)!
 
 ## About us
 

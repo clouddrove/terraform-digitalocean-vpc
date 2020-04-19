@@ -5,13 +5,13 @@
 #
 
 # Name of this project
-name : Terraform DigitalOcean SSH Key
+name : Terraform DigitalOcean VPC
 
 # License of this project
 license: "MIT"
 
 # Canonical GitHub repo
-github_repo: clouddrove/terraform-digitalocean-ssh-key
+github_repo: clouddrove/terraform-digitalocean-vpc
 
 # Badges to display
 badges:
@@ -24,7 +24,7 @@ badges:
 
 #  description of this project
 description: |-
-  Provides a DigitalOcean SSH key resource to allow you to manage SSH keys for Droplet access.
+  VPCs are virtual networks containing resources that can communicate with each other in full isolation, using private IP addresses.
 
 # extra content
 include:
@@ -35,10 +35,13 @@ usage : |-
   ### Simple Example
   Here is an example of how you can use this module in your inventory structure:
   ```hcl
-      module "ssh-key" {
-        source          = "./../"
-        key             = "~/.ssh/id_rsa.pub"
-        key_name        = "devops"
-        enable_ssh_key  = true
+        module "vpc" {
+        source = "./../"
+        name              = "basic-sns"
+        application       = "clouddrove"
+        environment       = "test"
+        label_order       = ["environment", "application", "name"]
+        enable_vpc        = true
+        region            = "bangalore-1"
       }
   ```
