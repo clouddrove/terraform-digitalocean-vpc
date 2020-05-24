@@ -30,9 +30,6 @@ variable "delimiter" {
   description = "Delimiter to be used between `organization`, `environment`, `name` and `attributes`."
 }
 
-
-
-
 #Module      : VPC
 #Description : VPCs are virtual networks containing resources that can communicate with each other in full isolation, using private IP addresses.
 variable "enable_vpc" {

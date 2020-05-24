@@ -39,5 +39,4 @@ resource "digitalocean_vpc" "default" {
   region      = coalesce(local.region[var.region], var.region)
   description = var.description
   ip_range    = var.ip_ragne
-
 }
