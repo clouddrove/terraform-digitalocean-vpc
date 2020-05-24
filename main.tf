@@ -1,9 +1,6 @@
 ## Managed By : CloudDrove
-##Description : This Script is used to create SSH Key.
+##Description : This Script is used to create VPC.
 ## Copyright @ CloudDrove. All Right Reserved.
-
-
-
 
 # locals for regions
 locals {
@@ -25,14 +22,13 @@ locals {
 #Module      : LABEL
 #Description : Terraform label module variables.
 module "labels" {
-  source = "git::https://github.com/clouddrove/terraform-digitalocean-labels.git"
+  source = "git::https://github.com/clouddrove/terraform-digitalocean-labels.git?ref=tags/0.12.0"
 
   name        = var.name
   application = var.application
   environment = var.environment
   label_order = var.label_order
 }
-
 
 #Module      : VPC
 #Description : VPCs are virtual networks containing resources that can communicate with each other in full isolation, using private IP addresses.
@@ -45,14 +41,3 @@ resource "digitalocean_vpc" "default" {
   ip_range    = var.ip_ragne
 
 }
-
-
-
-
-
-
-
-
-
-
-

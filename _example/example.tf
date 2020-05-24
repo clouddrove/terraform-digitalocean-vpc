@@ -7,7 +7,7 @@ provider "digitalocean" {
 
 module "vpc" {
   source      = "./../"
-  name        = "basic-sns"
+  name        = "vpc"
   application = "clouddrove"
   environment = "test"
   label_order = ["environment", "application", "name"]
