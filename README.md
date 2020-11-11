@@ -5,14 +5,14 @@
     Terraform DigitalOcean VPC
 </h1>
 
-<p align="center" style="font-size: 1.2rem;">
+<p align="center" style="font-size: 1.2rem;"> 
     VPCs are virtual networks containing resources that can communicate with each other in full isolation, using private IP addresses.
      </p>
 
 <p align="center">
 
 <a href="https://www.terraform.io">
-  <img src="https://img.shields.io/badge/Terraform-v0.12-green" alt="Terraform">
+  <img src="https://img.shields.io/badge/Terraform-v0.13-green" alt="Terraform">
 </a>
 <a href="LICENSE.md">
   <img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="Licence">
@@ -41,7 +41,7 @@
 
 ## Prerequisites
 
-This module has a few dependencies:
+This module has a few dependencies: 
 
 
 
@@ -57,7 +57,8 @@ This module has a few dependencies:
 Here is an example of how you can use this module in your inventory structure:
 ```hcl
       module "vpc" {
-      source = "git::https://github.com/clouddrove/terraform-digitalocean-vpc.git?ref=tags/0.12.0"
+      source            = "clouddrove/vpc/digitalocean"
+      version           = "0.13.0"
       name              = "vpc"
       application       = "clouddrove"
       environment       = "test"
@@ -75,22 +76,22 @@ Here is an example of how you can use this module in your inventory structure:
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|:----:|:-----:|:-----:|
-| application | Application (e.g. `cd` or `clouddrove`). | string | `` | no |
-| delimiter | Delimiter to be used between `organization`, `environment`, `name` and `attributes`. | string | `-` | no |
-| description | A free-form text field up to a limit of 255 characters to describe the VPC. | string | `VPC` | no |
-| enable_vpc | A boolean flag to enable/disable vpc. | bool | `true` | no |
-| environment | Environment (e.g. `prod`, `dev`, `staging`). | string | `` | no |
-| ip_ragne | The range of IP addresses for the VPC in CIDR notation. Network ranges cannot overlap with other networks in the same account and must be in range of private addresses as defined in RFC1918. It may not be larger than /16 or smaller than /24. | string | `10.10.0.0/16` | no |
-| label_order | Label order, e.g. `name`,`application`. | list | `<list>` | no |
-| name | Name  (e.g. `app` or `cluster`). | string | `` | no |
-| region | The region to create VPC, like ``london-1`` , ``bangalore-1`` ,``newyork-3`` ``toronto-1``. | string | `bangalore-1` | no |
+|------|-------------|------|---------|:--------:|
+| application | Application (e.g. `cd` or `clouddrove`). | `string` | `""` | no |
+| delimiter | Delimiter to be used between `organization`, `environment`, `name` and `attributes`. | `string` | `"-"` | no |
+| description | A free-form text field up to a limit of 255 characters to describe the VPC. | `string` | `"VPC"` | no |
+| enable\_vpc | A boolean flag to enable/disable vpc. | `bool` | `true` | no |
+| environment | Environment (e.g. `prod`, `dev`, `staging`). | `string` | `""` | no |
+| ip\_ragne | The range of IP addresses for the VPC in CIDR notation. Network ranges cannot overlap with other networks in the same account and must be in range of private addresses as defined in RFC1918. It may not be larger than /16 or smaller than /24. | `string` | `"10.10.0.0/16"` | no |
+| label\_order | Label order, e.g. `name`,`application`. | `list` | `[]` | no |
+| name | Name  (e.g. `app` or `cluster`). | `string` | `""` | no |
+| region | The region to create VPC, like `london-1` , `bangalore-1` ,`newyork-3` `toronto-1`. | `string` | `"bangalore-1"` | no |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| created_at | The date and time of when the VPC was created. |
+| created\_at | The date and time of when the VPC was created. |
 | default | A boolean indicating whether or not the VPC is the default one for the region. |
 | id | The unique identifier for the VPC.. |
 | urn | The uniform resource name (URN) for the VPC. |
@@ -100,7 +101,7 @@ Here is an example of how you can use this module in your inventory structure:
 
 
 
-## Feedback
+## Feedback 
 If you come accross a bug or have any feedback, please log it in our [issue tracker](https://github.com/clouddrove/terraform-digitalocean-vpc/issues), or feel free to drop us an email at [hello@clouddrove.com](mailto:hello@clouddrove.com).
 
 If you have found it worth your time, go ahead and give us a ★ on [our GitHub](https://github.com/clouddrove/terraform-digitalocean-vpc)!
