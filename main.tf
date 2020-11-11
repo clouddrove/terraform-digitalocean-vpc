@@ -22,8 +22,8 @@ locals {
 #Module      : LABEL
 #Description : Terraform label module variables.
 module "labels" {
-  source = "git::https://github.com/clouddrove/terraform-digitalocean-labels.git?ref=tags/0.13.0"
-
+  source      = "clouddrove/labels/digitalocean"
+  version     = "0.13.0"
   name        = var.name
   application = var.application
   environment = var.environment
