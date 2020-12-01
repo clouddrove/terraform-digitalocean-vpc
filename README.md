@@ -82,7 +82,7 @@ Here is an example of how you can use this module in your inventory structure:
 | description | A free-form text field up to a limit of 255 characters to describe the VPC. | `string` | `"VPC"` | no |
 | enable\_vpc | A boolean flag to enable/disable vpc. | `bool` | `true` | no |
 | environment | Environment (e.g. `prod`, `dev`, `staging`). | `string` | `""` | no |
-| ip\_ragne | The range of IP addresses for the VPC in CIDR notation. Network ranges cannot overlap with other networks in the same account and must be in range of private addresses as defined in RFC1918. It may not be larger than /16 or smaller than /24. | `string` | `"10.10.0.0/16"` | no |
+| ip\_range | The range of IP addresses for the VPC in CIDR notation. Network ranges cannot overlap with other networks in the same account and must be in range of private addresses as defined in RFC1918. It may not be larger than /16 or smaller than /24. | `string` | `"10.10.0.0/16"` | no |
 | label\_order | Label order, e.g. `name`,`application`. | `list` | `[]` | no |
 | name | Name  (e.g. `app` or `cluster`). | `string` | `""` | no |
 | region | The region to create VPC, like `london-1` , `bangalore-1` ,`newyork-3` `toronto-1`. | `string` | `"bangalore-1"` | no |
