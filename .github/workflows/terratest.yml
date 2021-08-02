@@ -14,7 +14,10 @@ jobs:
       - name: 'Checkout'
         uses: actions/checkout@master
 
-     -  run: export DIGITALOCEAN_TOKEN=${{ secrets.DO_TOKEN }}
+      - name: Install doctl
+        uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{ secrets.DO_TOKEN }}
 
       - name: 'Terratest'
         if: ${{ github.event.label.name == 'terratest' }}
