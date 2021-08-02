@@ -14,7 +14,7 @@ jobs:
       - name: 'Checkout'
         uses: actions/checkout@master
 
-
+        run: export DIGITALOCEAN_TOKEN=${{ secrets.DO_TOKEN }}
       - name: 'Terratest'
         if: ${{ github.event.label.name == 'terratest' }}
         uses: 'clouddrove/github-actions@v9.0'
