@@ -22,12 +22,12 @@ locals {
 #Module      : LABEL
 #Description : Terraform label module variables.
 module "labels" {
-  source      = "clouddrove/labels/digitalocean"
-  version     = "0.13.0"
+  source = "git::https://github.com/terraform-do-modules/terraform-digitalocean-labels.git?ref=0.15"
+  #version     = "0.15.0"
   name        = var.name
-  application = var.application
   environment = var.environment
   label_order = var.label_order
+
 }
 
 #Module      : VPC
