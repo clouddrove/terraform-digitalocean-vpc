@@ -1,39 +1,46 @@
-name: 'Terraform GitHub Actions'
+name: 'Create README.md file'
 on:
-  pull_request:
+  push:
     branches:
       - master
 
 jobs:
-  terraform:
-    name: 'Terraform'
+  readme-create:
+    name: 'readme-create'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@master
+        uses: actions/checkout@v2.3.4
 
-      - name: 'Terraform Format'
-        uses: 'clouddrove/github-actions@v9.0.1'
+      - name: 'Set up Python 3.7'
+        uses: actions/setup-python@v2
         with:
-          actions_subcommand: 'fmt'
+          python-version: '3.x'
 
-      - name: 'Terraform init'
-        uses: 'clouddrove/github-actions@v9.0.1'
+      - name: 'create readme'
+        uses: 'clouddrove/github-actions@v9.0'
         with:
-          actions_subcommand: 'init'
-          tf_actions_working_dir: ./_example
+          actions_subcommand: 'readme'
+          github_token: '${{ secrets.GITHUB }}'
+        env:
+          GITHUB_TOKEN: ${{ secrets.CLOUDDROVE_GITHUB_TOKEN }}
 
-      - name: 'Terraform validate'
-        uses: 'clouddrove/github-actions@v9.0.1'
-        with:
-          actions_subcommand: 'validate'
-          tf_actions_working_dir: ./_example
 
-      - name: 'Terraform plan'
-        uses: 'clouddrove/github-actions@v9.0.1'
+      - name: 'pre-commit check errors'
+        uses: pre-commit/action@v2.0.0
+        continue-on-error: true
+
+      - name: 'pre-commit fix errors'
+        uses: pre-commit/action@v2.0.0
+        continue-on-error: true
+
+      - name: 'push readme'
+        uses: 'clouddrove/github-actions@v9.0'
+        continue-on-error: true
         with:
-          actions_subcommand: 'plan'
-          tf_actions_working_dir: ./_example
+          actions_subcommand: 'push'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: 'Slack Notification'
         uses: clouddrove/action-slack@v2
